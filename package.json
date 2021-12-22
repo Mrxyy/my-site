@@ -1,0 +1,27 @@
+{
+  "name": "resume",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "ts-node server"
+  },
+  "dependencies": {
+    "@vue/server-renderer": "^3.2.26",
+    "memo-ui": "workspace:^0.0.4",
+    "vue": "3.2.23",
+    "vue-router": "4"
+  },
+  "dependenciesMeta": {
+    "memo-ui": {
+      "injected": true
+    }
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vue-tsc": "^0.29.8"
+  }
+}
