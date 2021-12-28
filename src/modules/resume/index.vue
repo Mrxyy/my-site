@@ -4,7 +4,7 @@
         ref="resumeContainer"
         :contenteditable="enableEdit"
     >
-        <div class="w-8/12 m-auto p-10">
+        <div class="w-10/12 m-auto p-10">
             <div class="personalInfo grid grid-cols-5 mb-5">
                 <ul class="col-span-4">
                     <template v-for="infoLineItem in personalInfo">
@@ -237,6 +237,9 @@ export default defineComponent({
     max-height: 100vh;
     scroll-behavior: smooth;
     overflow-y: overlay;
+    > div {
+        width: 800px;
+    }
     &.dark {
         background: rgba(0, 0, 0, 0.7);
         color: rgba(255, 255, 255, 0.7);
