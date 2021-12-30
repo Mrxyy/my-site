@@ -1,6 +1,6 @@
 <template>
     <div
-        class="resume-container bg-primary bg-opacity-10"
+        :class="`resume-container bg-primary bg-opacity-10 ${currentTheme}`"
         ref="resumeContainer"
         :contenteditable="enableEdit"
     >
@@ -23,8 +23,9 @@
                                     :class="`${infoItme?.bold ? 'font-bold' : ''}`"
                                 >
                                     <a
-                                        :class="`${infoItme?.type ? 'text-link' : ''}`"
-                                        :href="infoItme?.type ? (infoItme.type + ':' + infoItme.val) : 'javascript:'"
+                                        :class="`${infoItme?.type !== undefined ? 'text-link' : ''}`"
+                                        :target="infoItme.target || '_self'"
+                                        :href="infoItme?.type !== undefined ? (infoItme.type + infoItme.val) : 'javascript:'"
                                     >{{ infoItme?.val || infoItme }}</a>
                                 </p>
                             </div>
@@ -53,12 +54,13 @@ import resumeList, { pageMainContent, setMoreOptonChildContent } from "./List/in
 import resumeMenu from "../../components/menu/Circle.vue"
 
 export enum PersonalInfoItemType {
-    phone = "tel",
-    email = "mailto"
+    phone = "tel:",
+    email = "mailto:",
+    link = ""
 }
 
 interface PersonalInfoItem {
-    [ksy: string]: string | { val: number | string, type?: PersonalInfoItemType, bold?: boolean }
+    [ksy: string]: string | { val: number | string, type?: PersonalInfoItemType, bold?: boolean, target?: "_blank" | "_self" }
 }
 
 interface Data {
@@ -75,7 +77,11 @@ export default defineComponent({
             enableEdit: false,
             personalInfo: [
                 {
-                    "熊洋洋 / 男 / 23": ''
+                    "熊洋洋 / 男 / 23": '',
+                    "求职意向": {
+                        val: "WEB 开发",
+                        bold: true
+                    }
                 },
                 {
                     "联系方式": {
@@ -96,41 +102,51 @@ export default defineComponent({
                     },
                 },
                 {
-                    "求职意向": {
-                        val: "WEB 开发",
-                        bold: true
+                    "github": {
+                        val: "https://github.com/Mrxyy",
+                        type: PersonalInfoItemType.link,
+                        bold: true,
+                        target: "_blank"
+                    }
+                },
+                {
+                    "kubesphere": {
+                        val: "https://github.com/kubesphere",
+                        type: PersonalInfoItemType.link,
+                        bold: true,
+                        target: "_blank"
                     }
                 }
             ],
             pageMainContent: {
                 "掌握技能": [
-                    '按照需求选用合适的技术高效开发出符合web标准的页面，有良好的编码习惯和规范，熟悉语言语法特  性以及编程思想。',
+                    '按照需求选用合适的技术高效开发出符合web标准的页面，有良好的编码习惯和规范，熟悉语言语法特性以及编程思想。',
+                    '在程序中使用合理的设计模式降低耦合提高性能以及可维护性，对常用的数据结构以及算法具有良好代码实现能力。',
                     '使用开发者工具对项目进行性能测试，快速定位存在的问题并针对其进行优化提高用户体验。',
-                    '主导前端项目工程化的基建，对项目模块化、组件化、规范化、自动化具有成熟的知识体系。',
-                    'node中间层开发，对koa2以及常用node模块熟练掌握。对mysql、MongoDB、redis数据库熟练使用并  对市面上大多数据库都有相关了解。熟悉linux系统、多种通信协议。',
-                    '在程序中使用合理的设计模式降低耦合提高性能以及可维护性，对常用的数据结构以及算法具有良好  代码实现能力。',
-                    '有 java 开发经验，熟练使用spring相关技术栈独立开发web 项目。',
+                    '主导过前端项目工程化的基建，对项目模块化、组件化、规范化、自动化具有成熟的知识体系，具有一定的前端运维能力。',
+                    'node中间层开发，对koa2以及常用node模块熟练掌握。对mysql、MongoDB、redis数据库熟练。熟悉linux系统、多种通信协议。',
+                    '有 java 开发经验，熟练使用spring相关技术栈独立开发web项目。',
                     {
                         '技术栈': [
-                            '具有扎实的html、css、js、layout基础，熟练掌握React、vue相关技术栈并知晓其实现原理和应用场景。',
-                            '前端工程化相关技术:webpack、snowpack、rollup、esbuild、babel、glup、jenkins、git。',
-                            '有微信小程序、web app、Hybrid app、pwa开发经验，对uniapp、web worker具有熟练的使用经验。',
-                            'Web 可视化技术和视觉相关开发经验。熟悉c3、canvas、svg、flash 等，对zrender、snap、velocity、  echarts 等框架库都在开发中有过使用经验。',
-                            '大屏大开发经验，对大屏的适配方案、性能优化都有一定的心得，并在项目中对离线地图有过多次的使用，  如：leaflet、cesium、openLayer。'
+                            '具有扎实的html、css、js、layout基础，熟练掌握React、vue、backbone相关技术栈并知晓其实现原理和应用场景。',
+                            '前端工程化相关技术:webpack、vite/snowpack、rollup、esbuild、babel、glup、jenkins、git。',
+                            '有微信小程序、web app、Hybrid app、pwa开发经验，对uniapp、web workers具有熟练的使用经验。',
+                            'Web 可视化技术和视觉相关开发经验。熟悉c3、canvas、svg、flash 等，对zrender、snap、velocity、d3 等框架库都在开发中有过使用经验。',
+                            '大屏大开发经验，对大屏的适配方案、性能优化都有一定的心得，并在项目中对离线地图有过多次的使用，如：leaflet、cesium、openLayer。'
                         ]
                     }
                 ],
                 "工作经验": [
                     setMoreOptonChildContent(
                         {
-                            "青云科技": setMoreOptonChildContent(["云防火墙开发以及组件库的维护。", "参与MicroFrontend的重构工作。"], { icon: "&#10148" }),
+                            "青云科技": setMoreOptonChildContent(["云防火墙以及数据库产品相关开发维护。", "云平台MicroFrontend的重构工作以及组件库的维护。"], { icon: "&#10148" }),
 
                         }
                         , {
                             time: "2021/2 – 至今",
-                            rightText: "软件开发",
+                            leftText: "软件开发",
                             titleSize: 'xl',
-                            rightTextSize: 'xl',
+                            leftTextSize: 'xl',
                         }),
                     setMoreOptonChildContent(
                         {
@@ -139,9 +155,9 @@ export default defineComponent({
                         }
                         , {
                             time: "2020/7 – 2020/12",
-                            rightText: "web 开发  ",
+                            leftText: "web 开发  ",
                             titleSize: 'xl',
-                            rightTextSize: 'xl',
+                            leftTextSize: 'xl',
                         }),
 
                     setMoreOptonChildContent(
@@ -151,54 +167,76 @@ export default defineComponent({
                         }
                         , {
                             time: "2019/7 – 2020/7",
-                            rightText: "web前端",
+                            leftText: "web前端",
                             titleSize: 'xl',
-                            rightTextSize: 'xl',
+                            leftTextSize: 'xl',
                         }),
 
                 ],
-                "项目经验": [
+                "近期项目": [
                     {
-                        "1. 青云云防火墙": [
+                        "1. kubesphere（dmp）": [
                             setMoreOptonChildContent(
                                 {
-                                    "项目介绍": setMoreOptonChildContent(['青云云防火墙可针对云上公网IP和互联网之间制定内访外和外访内的控制策略，满足云用户  对于互联网流量访问控制的管理与安全防护需求。'], { icon: "&#9635" }),
-                                    "任务职责": setMoreOptonChildContent(['计费模块：包括购买开通（权限认证）、正常续费、过期续费、自动续费、升级。', '防护策略：配置策略、开启策略、策略查重、复制策略、策略绑定、策略校检。', '前端维护以及测试，协助组件库的开发。'], { icon: "&#9635" })
+                                    "项目介绍": setMoreOptonChildContent(['KubeSphere 愿景是打造一个以 Kubernetes 为内核的云原生分布式操作系统，它的架构可以非常方便地使第三方应用与云原生生态组件进行即插即用（plug-and-play）的集成，支持云原生应用在多云与多集群的统一分发和运维管理。 KubeSphere 也是一个多租户容器平台，提供全栈的 IT 自动化运维的能力，简化企业的 DevOps 工作流。'], { icon: "&#9635" }),
+                                    "任务职责": setMoreOptonChildContent(['对接Prometheus数据，为应用实现可视化系统。', '负责qdmp模块，负责数据库相关应用开发。'], { icon: "&#9635" }),
+                                    "解决难点": setMoreOptonChildContent(['使用d3、recharts等对图表控件进行原子化。', '解决图表交互体验和性能冲突问题（Houdini）。', '图表可被自定义配置以及数据拖拽方案。', '动态数据并发场景以及数据频繁推送场景下页面高性能渲染。'], { icon: "&#9635" })
                                 }
                                 , {
                                     titleSize: 'xl',
                                     icon: "&#9672"
                                 }),
                         ],
-                        "2. 军事信息系统": [
+                        "2. qingcloud appCenter console": [
                             setMoreOptonChildContent(
                                 {
-                                    "项目介绍": setMoreOptonChildContent(["本系统应用于某情报军队信息的分析，主要功能包括互联网信息分析、视频影像分析、卫星  帧照、海上船舶与军事基地信息分析。是一个高度可视化且高效的信息分析系统。"], { icon: "&#9635" }),
-                                    "任务职责": setMoreOptonChildContent(["参与项目的搭建和相关接口开发以及大数据性能优化，负责互联网信息分析和帧照分析相关  页面和业务逻辑。", "帧照分析相关页面：时间控制器、地图展示优化、帧照区域可视化、cesium地图交互。 ", "互联网信息分析：对互联网社交平台上的言论进行分析并使用可视化的方式展现包括echarts  图表组件封装、复用支持自定义的列表组件、词云"], { icon: "&#9635" })
-
+                                    "项目介绍": setMoreOptonChildContent(["appcenter提供从应用、运行环境、带宽以及云资源的一站式应用产品，帮助您高效便捷的部署云上业务。"], { icon: "&#9635" }),
+                                    "任务职责": setMoreOptonChildContent(["维护以及新功能的开发，相关工单处理。", "部署应用配置包可视化表单开发。"], { icon: "&#9635" }),
+                                    "解决难点": setMoreOptonChildContent(['使用web storage对应用配置包进行缓存处理。', '使用不同类型web worker进行相应操作提高性能。', '使用状态模式读取配置包动态渲染相应的表单控件。'], { icon: "&#9635" })
                                 }
                                 , {
                                     titleSize: 'xl',
                                     icon: "&#9672"
                                 }),
                         ],
-                        "3. 智能交通大数据研判平台": [
+                        "3. 地理测绘信息平台": [
                             setMoreOptonChildContent(
                                 {
-                                    "项目介绍": setMoreOptonChildContent(["该项目是应用于交管局中交通路口的路况信息数据管理、可视化、数据对比。包括不同地区、  不同时间、不同类型路口的交通数据，这些数据显示在页面展示出真实交通路况且一目了然。"], { icon: "&#9635" }),
-                                    "任务职责": setMoreOptonChildContent(["负责搭建项目以及技术选型，项目组件库以及layout。", "编写交通路口数据模块和智能优化效果分析模块。 ", "交通路口数据模块：编写时间轴控制器、地区选择控制器、路灯方案控制器等多个控制器之  间的交互；使用canvas、svg、css3 实现路线、路灯、路口地图、多个控制器可视化；编写  颜色状态判断函数使用 mixin 混入全局中，应用于全局的颜色状态判断和首页中国地图和其  交互的编写。", "智能优化效果分析模块：对单位时间内的数据图表化分析。使用echarts、d3等图表库进行组件封装。"], { icon: "&#9635" })
-
+                                    "项目介绍": setMoreOptonChildContent(["它是用于采集、存储、处理、分析、检索和显示空间数据的计算机系统，可以根据地理数据自定义地图配置和数据图形化形态。"], { icon: "&#9635" }),
+                                    "任务职责": setMoreOptonChildContent(["项目前期调研，以及工程化建设。", "工单模块、帧照模块、gis模块开发工作。"], { icon: "&#9635" }),
+                                    "解决难点": setMoreOptonChildContent(['在cesiumm大数据量场景下渲染导致死机和卡顿问题下制定合适的聚合算法以及scheduler。', '图片大小与质量压缩，大文件分段上传。', '条件型CORS响应下导致的缓存错乱问题。', ' 大数据下dom页面渲染方案以及性能监测。'], { icon: "&#9635" })
                                 }
                                 , {
                                     titleSize: 'xl',
                                     icon: "&#9672"
+                                }),
+                        ],
+                        "个人项目": [
+                            setMoreOptonChildContent(
+                                {
+                                    "local-mk-editor-in-browser": setMoreOptonChildContent(["一款基于web stream可以在浏览器中对本地文件系统进行增删改的markdown编辑器。"], {
+                                        icon: "&#9635"
+                                    }),
+                                }
+                                , {
+                                    titleSize: 'xl',
+                                    icon: "&#9672",
+                                    linkText: "(https://github.com/Mrxyy/local-mk-editor-in-browser)",
+                                    link: "https://github.com/Mrxyy/local-mk-editor-in-browser"
+                                }),
+                            setMoreOptonChildContent(
+                                {
+                                    "memo-ui": setMoreOptonChildContent(["memo-ui是在vue3基础上构建的一个ui库。技术栈：vue3、vite、ts、scss、tailwindcss,提供丰富的组件以便于更快更高效构建网站。"], { icon: "&#9635" }),
+                                }
+                                , {
+                                    titleSize: 'xl',
+                                    icon: "&#9672",
+                                    linkText: "(https://github.com/Mrxyy/memo-ui)",
+                                    link: "https://github.com/Mrxyy/memo-ui"
                                 }),
                         ],
                     }
-                ]
-
-
-
+                ],
             }
         }
     },
@@ -271,3 +309,4 @@ export default defineComponent({
     }
 }
 </style>
+

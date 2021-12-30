@@ -2,14 +2,20 @@
   <div v-for="contentItem,contentKey  in pageMainContent" class="skill-container my-4">
     <div class="paragraph-headings flex">
       <span
-        v-if="pageMainContent.rightText"
-        :class="`font-bold text-xl text-${pageMainContent.rightTextSize || '2xl'}`"
-      >{{ pageMainContent.rightText }}</span>
+        v-if="pageMainContent.leftText"
+        :class="`font-bold text-${pageMainContent.leftTextSize || '2xl'}`"
+      >{{ pageMainContent.leftText }}</span>
       <span v-if="pageMainContent.time" class="mx-10 font-bold">{{ pageMainContent.time }}</span>
       <h2 :class="`text-primary font-bold text-${pageMainContent.titleSize || '2xl'}`">
         <span class="icon mr-2" v-if="pageMainContent.icon" v-html="pageMainContent.icon"></span>
         {{ contentKey }}
       </h2>
+      <a
+        v-if="pageMainContent.linkText"
+        target="_blank"
+        :href="pageMainContent.link"
+        :class="` text-link text-xs ml-2 leading-8`"
+      >{{ pageMainContent.linkText }}</a>
     </div>
     <ul class="pl-6">
       <li v-for="skillItem,index in contentItem" class="leading-8 my-2 whitespace-nowrap">
@@ -51,9 +57,11 @@ interface childContent {
 
 interface moreOptonChildContent {
   time?: string,
-  rightText?: string,
+  leftText?: string,
   titleSize?: string,
-  rightTextSize?: string
+  linkText?: string,
+  leftTextSize?: string
+  link?: string
   // <!-- http://www.fhdq.net/ts/177.html -->
   // <!-- https://www.webhek.com/post/html-enerty-code.html -->
   icon?: string,
