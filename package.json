@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@vue/server-renderer": "^3.2.26",
+    "jsoneditor": "^9.5.11",
     "memo-ui": "workspace:^0.0.4",
     "vue": "3.2.23",
     "vue-router": "4"
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
+    "sass": "^1.45.2",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
     "vue-tsc": "^0.29.8"

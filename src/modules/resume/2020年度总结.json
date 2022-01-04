@@ -1,0 +1,185 @@
+{
+    "personalInfo": [
+        {
+            "姓名": {
+                "val": "熊洋洋"
+            }
+        },
+        {
+            "部门": {
+                "val": "数据平台事业部"
+            }
+        },
+        {
+            "邮箱": {
+                "val": "jadenxiong@yunify.com",
+                "type": "mailto:"
+            }
+        }
+    ],
+    "pageMainContent": {
+        "2020 年主要完成工作": [
+            [
+                {
+                    "逻辑备份": [
+                        [
+                            "完成逻辑备份功能需求。",
+                            "完成集群备份模块。",
+                            "快照备份和逻辑备份代码改造。",
+                            "修复备份部署集群等bug。"
+                        ],
+                        {
+                            "icon": "&#9635"
+                        }
+                    ]
+                },
+                {
+                    "titleSize": "xl",
+                    "icon": "&#9672",
+                    "linkText": "(https://console.qingcloud.com/ap3/clusters_snapshots/logical)",
+                    "link": "https://console.qingcloud.com/ap3/clusters_snapshots/logical"
+                }
+            ],
+            [
+                {
+                    "DMP 1期": [
+                        [
+                            "页面还原。",
+                            "监控模块。"
+                        ],
+                        {
+                            "icon": "&#9635"
+                        }
+                    ]
+                },
+                {
+                    "titleSize": "xl",
+                    "icon": "&#9672",
+                    "linkText": "(https://console.qingcloud.com/ap3/clusters_snapshots/logical)",
+                    "link": "https://console.qingcloud.com/ap3/clusters_snapshots/logical"
+                }
+            ],
+            [
+                {
+                    "mysql 公网访问": [
+                        [
+                            "Eip 功能需求。",
+                            "私有云Eip特殊处理。",
+                            "Eip添加账号功能。"
+                        ],
+                        {
+                            "icon": "&#9635"
+                        }
+                    ]
+                },
+                {
+                    "titleSize": "xl",
+                    "icon": "&#9672",
+                    "linkText": "(https://console.qingcloud.com/ap3/app/app-00r26u27/)",
+                    "link": "https://console.qingcloud.com/ap3/app/app-00r26u27/"
+                }
+            ],
+            [
+                {
+                    "云防火墙1期": [
+                        [
+                            "相关需求开发。",
+                            "模块i18n处理。",
+                            "Ui重构：https://wiki.yunify.com/pages/viewpage.action?pageId=63352912"
+                        ],
+                        {
+                            "icon": "&#9635"
+                        }
+                    ]
+                },
+                {
+                    "titleSize": "xl",
+                    "icon": "&#9672",
+                    "linkText": "(https://console.qingcloud.com/cfw/)",
+                    "link": "https://console.qingcloud.com/cfw/"
+                }
+            ],
+            [
+                {
+                    "portal ui": [
+                        [
+                            "组件开发"
+                        ],
+                        {
+                            "icon": "&#9635"
+                        }
+                    ]
+                },
+                {
+                    "titleSize": "xl",
+                    "icon": "&#9672",
+                    "linkText": "(http://192.168.5.20:8080/components/loading)",
+                    "link": "http://192.168.5.20:8080/components/loading"
+                }
+            ],
+            [
+                {
+                    "DMP之前的脚手架": [
+                        [
+                            "自动化部署CI(https://www.npmjs.com/package/qc-dbg-docusaurus-core)",
+                            "脚手架(https://git.internal.yunify.com/zhangxin/dmp-console)"
+                        ],
+                        {
+                            "icon": "&#9635"
+                        }
+                    ]
+                },
+                {
+                    "titleSize": "xl",
+                    "icon": "&#9672"
+                }
+            ]
+        ],
+        "工作中的学习总结": [
+            "docker网络模式：https://cwiki.yunify.com/pages/viewpage.action?pageId=80091163",
+            "K8s资源共享机制：https://cwiki.yunify.com/pages/viewpage.action?pageId=80091165",
+            "jenkins进行ci/cd：https://cwiki.yunify.com/display/~jadenxiong/jenkins",
+            "console Backbone教程基本知识"
+        ],
+        "自我总结": [
+            [
+                {
+                    "自我评价": [
+                        [
+                            "遇到bug的时候能够提出问题并@相关同事积极解决。",
+                            "对于工作内容能积极规划完成，对接其他同事的时候有针对业务思考。",
+                            "对于不太熟悉的领域能够积极学习掌握，console采用的backbone框架和dmp需要k8s相关知识都能学习并掌握完成需求。",
+                            "对于未来希望和同事一起共同努力，完成后期云原生数据平台以及后面云平台consoel相关需求和服务化。"
+                        ],
+                        {
+                            "icon": "&#9635"
+                        }
+                    ]
+                },
+                {
+                    "titleSize": "xl",
+                    "icon": "&#9672"
+                }
+            ],
+            [
+                {
+                    "不足": [
+                        [
+                            "完成逻辑备份过程中，由于环境问题需要协调多个部门同事，自己对于这个情况经验不足，需要加强沟通协调能力。",
+                            "每次提交代码的时候，云平台console代码需要兼容低版本浏览器有时候忽略使用其他库处理这个问题在code review中不过关，浪费一些时间。",
+                            "在前期staging、pek2环境相互测试时候不能够很好处理代码依赖关系，导致分支切换代码可能遗漏代码提交记录，后期已经解决这个问题。"
+                        ],
+                        {
+                            "icon": "&#9635"
+                        }
+                    ]
+                },
+                {
+                    "titleSize": "xl",
+                    "icon": "&#9672"
+                }
+            ]
+        ]
+    },
+    "name": "熊洋洋-2021 年度绩效考核之工作总结"
+}

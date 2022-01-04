@@ -66,10 +66,16 @@ export default defineComponent({
                         }
                     }
                 },
-                "联系": {
-                    class: "pie-chart",
-                    href: "#邮箱",
-                    target: "_self"
+                // "联系": {
+                //     class: "pie-chart",
+                //     href: "#邮箱",
+                //     target: "_self"
+                // },
+                "编辑": {
+                    class: "pencil-square",
+                    event: {
+                        "click": this.edit
+                    }
                 },
                 "github": {
                     class: "github",
@@ -84,10 +90,13 @@ export default defineComponent({
         }
     },
     props: ["theme"],
-    emits: ["switchThemeHandler"],
+    emits: ["switchThemeHandler", "edit"],
     methods: {
         switchTheme() {
             this.$emit("switchThemeHandler");
+        },
+        edit() {
+            this.$emit("edit");
         }
     }
 })

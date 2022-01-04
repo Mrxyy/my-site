@@ -3,15 +3,21 @@
     <div class="paragraph-headings flex">
       <span
         v-if="pageMainContent.leftText"
+        :contenteditable="enableEdit"
         :class="`font-bold text-${pageMainContent.leftTextSize || '2xl'}`"
       >{{ pageMainContent.leftText }}</span>
-      <span v-if="pageMainContent.time" class="mx-10 font-bold">{{ pageMainContent.time }}</span>
+      <span
+        v-if="pageMainContent.time"
+        :contenteditable="enableEdit"
+        class="mx-10 font-bold"
+      >{{ pageMainContent.time }}</span>
       <h2 :class="`text-primary font-bold text-${pageMainContent.titleSize || '2xl'}`">
         <span class="icon mr-2" v-if="pageMainContent.icon" v-html="pageMainContent.icon"></span>
-        {{ contentKey }}
+        <span :contenteditable="enableEdit">{{ contentKey }}</span>
       </h2>
       <a
         v-if="pageMainContent.linkText"
+        :contenteditable="enableEdit"
         target="_blank"
         :href="pageMainContent.link"
         :class="` text-link text-xs ml-2 leading-8`"
@@ -34,6 +40,7 @@
           <span
             :id="'skillItem' + index"
             class="text-justify skillItem inline-flex align-top whitespace-normal"
+            :contenteditable="enableEdit"
           >{{ skillItem }}</span>
         </template>
         <template v-if="typeof skillItem === 'object'">
@@ -49,10 +56,6 @@ import { defineComponent, PropType, readonly } from 'vue'
 export enum PersonalInfoItemType {
   phone,
   email
-}
-
-interface childContent {
-  [key: string]: Array<string | childContent>
 }
 
 interface moreOptonChildContent {
@@ -86,7 +89,9 @@ export function setMoreOptonChildContent<T>(obj: T, moreOptonChildContent: moreO
       descriptor.enumerable = false
     }
   });
+  Object.setPrototypeOf(moreOptonChildContent, Object.getPrototypeOf(obj))
   Object.setPrototypeOf(obj, moreOptonChildContent);
+  Object.defineProperty(obj, "isConfigObj", { value: false })
   return obj
 }
 
@@ -96,6 +101,11 @@ export default defineComponent({
     pageMainContent: {
       required: true,
       type: Object as PropType<pageMainContent>
+    },
+    enableEdit: {
+      require: false,
+      default: true,
+      type: Boolean
     }
   }
 })
