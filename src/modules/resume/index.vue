@@ -31,14 +31,15 @@
                         </li>
                     </template>
                 </ul>
-                <!-- <div class="col-span-1 picture">
+                <div class="col-span-1 picture">
                     <img
-                        src="../../assets/icon.png"
+                        v-if="logo"
+                        :src="logo.href"
                         class="m-auto"
-                        :style="{ width: '90px', height: '110px' }"
+                        :style="{ width: logo.width || '90px', height: logo.height || '110px' }"
                         title="jaden.xiong"
                     />
-                </div>-->
+                </div>
             </div>
             <div class="w-full border-b px-10 -ml-10 my-5 box-content"></div>
             <resumeList :page-main-content="pageMainContent" :enable-edit="enableEdit" />
@@ -65,6 +66,11 @@ interface Data {
         personalInfo: Array<PersonalInfoItem>,
         pageMainContent: pageMainContent,
         name?: string
+        logo?: {
+            href?: string,
+            width?: string,
+            height?: string
+        }
     }
 }
 
@@ -100,6 +106,10 @@ export default defineComponent({
         },
         name() {
             return rawToData(this.rawJsonData).name
+        },
+        logo() {
+            console.log(rawToData(this.rawJsonData).logo);
+            return rawToData(this.rawJsonData).logo
         }
     } as any,
     components: {

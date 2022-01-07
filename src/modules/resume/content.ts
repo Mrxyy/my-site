@@ -1,5 +1,5 @@
 import { pageMainContent, setMoreOptonChildContent } from "./List/index.vue"
-import dataJson from "./2020年度总结.json"
+import dataJson from "./base.json"
 
 export enum PersonalInfoItemType {
     phone = "tel:",
@@ -49,17 +49,25 @@ function dataJsonTransformPageMainContent(json: object, parent?: object, key?: s
 interface RawToData {
     pageMainContent: pageMainContent,
     personalInfo: Array<PersonalInfoItem>,
-    name: string
+    name: string,
+    logo: {
+        href?: string,
+        width?: string,
+        height?: string
+    }
 }
 
 export function rawToData(dataJson): RawToData {
-    let { pageMainContent: pageMainContentJsonData, personalInfo: personalInfoJsonData, name } = dataJson
+    let { pageMainContent: pageMainContentJsonData, personalInfo: personalInfoJsonData, name, logo } = dataJson
+    console.log(dataJson);
+
     const tempData = dataJsonTransformPageMainContent({ ...pageMainContentJsonData }, dataJson, "pageMainContent");
     // console.log(tempData, dataJson);
     return {
         pageMainContent: tempData,
         personalInfo: personalInfoJsonData,
-        name
+        name,
+        logo
     }
 }
 
