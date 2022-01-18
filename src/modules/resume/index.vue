@@ -161,6 +161,9 @@ export default defineComponent({
     max-height: 100vh;
     scroll-behavior: smooth;
     overflow-y: overlay;
+    .w-6\/12 {
+        width: 50%;
+    }
     > div {
         width: 800px;
     }
