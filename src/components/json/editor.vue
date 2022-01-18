@@ -9,7 +9,6 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
     async mounted() {
-        import("jsoneditor/dist/jsoneditor.min.css");
         const { default: JSONEditor } = await import("jsoneditor");
         const editor = new JSONEditor(this.$refs["json-editor"], {
             onChangeJSON: this.onChangeJSON,
@@ -38,6 +37,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+$jse-blue: rgba(16, 185, 129) !default;
+@import "jsoneditor/src/scss/jsoneditor";
+
 .json-editor {
     height: 100%;
 }

@@ -80,7 +80,7 @@ export default defineComponent({
         const storageJsonData = localStorage && localStorage.getItem("JsonData");
         return {
             currentTheme: 'light',
-            enableEdit: true,
+            enableEdit: false,
             JsonData: (storageJsonData && JSON.parse(storageJsonData)) || JsonData,
         }
     },
