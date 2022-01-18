@@ -7,6 +7,9 @@
     "preview": "vite preview",
     "start": "ts-node server"
   },
+  "engines": {
+    "node": "16"
+  },
   "dependencies": {
     "@vue/server-renderer": "^3.2.26",
     "jsoneditor": "^9.5.11",
