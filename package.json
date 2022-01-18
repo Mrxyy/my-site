@@ -10,7 +10,7 @@
   "dependencies": {
     "@vue/server-renderer": "^3.2.26",
     "jsoneditor": "^9.5.11",
-    "memo-ui": "^0.0.4",
+    "memo-ui": "0.0.5",
     "vue": "3.2.23",
     "vue-router": "4"
   },
@@ -19,6 +19,8 @@
     "sass": "^1.45.2",
     "typescript": "^4.4.4",
     "vite": "^2.7.2",
-    "vue-tsc": "^0.29.8"
+    "vue-tsc": "^0.29.8",
+    "koa": "^2.13.4",
+    "ts-node": "^10.4.0"
   }
 }
