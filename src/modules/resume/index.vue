@@ -7,7 +7,7 @@
                         <li class="flex my-2 items-center content-center">
                             <span class="icon text-primary">&#10152</span>
                             <div
-                                v-for="infoItme,infoItmeKey in infoLineItem"
+                                v-for="infoItme, infoItmeKey in infoLineItem"
                                 :class="`${infoItme ? 'infoChunk' : ''} inline-flex w-6/12 leading-7`"
                             >
                                 <label

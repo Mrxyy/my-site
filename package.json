@@ -5,16 +5,19 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "ts-node server"
+    "start": "ts-node server",
+    "build:server": "vite build --ssr ./src/SSREntry.ts --outDir dist/server",
+    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "generate": "vite build --ssrManifest --outDir dist/static"
   },
   "engines": {
     "node": "16"
   },
   "dependencies": {
-    "@vue/server-renderer": "^3.2.23",
+    "@vue/server-renderer": "^3.2.26",
     "jsoneditor": "^9.5.11",
     "memo-ui": "^0.0.5",
-    "vue": "3.2.23",
+    "vue": "^3.2.27",
     "vue-router": "4"
   },
   "devDependencies": {

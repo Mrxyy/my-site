@@ -37,6 +37,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+$jse-icons: "./img/jsoneditor-icons.svg" !default;
 $jse-blue: rgba(16, 185, 129) !default;
 @import "jsoneditor/src/scss/jsoneditor";
 

@@ -5,6 +5,9 @@ import { router } from "./router"
 
 import App from './App.vue'
 
+// import assets
+import "./assets"
+
 
 const app = createSSRApp(App);
 app.use(memo);

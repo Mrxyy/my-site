@@ -1,5 +1,6 @@
 import { pageMainContent, setMoreOptonChildContent } from "./List/index.vue"
 import dataJson from "./base.json"
+import icon from '../../assets/icon.png';
 
 export enum PersonalInfoItemType {
     phone = "tel:",
@@ -67,7 +68,9 @@ export function rawToData(dataJson): RawToData {
         pageMainContent: tempData,
         personalInfo: personalInfoJsonData,
         name,
-        logo
+        logo: {
+            "href": icon
+        }
     }
 }
 
