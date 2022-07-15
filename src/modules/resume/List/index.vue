@@ -104,7 +104,7 @@ export default defineComponent({
     },
     enableEdit: {
       require: false,
-      default: true,
+      default: false,
       type: Boolean
     }
   }

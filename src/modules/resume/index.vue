@@ -8,9 +8,10 @@
                             <span class="icon text-primary">&#10152</span>
                             <div
                                 v-for="infoItme, infoItmeKey in infoLineItem"
-                                :class="`${infoItme ? 'infoChunk' : ''} inline-flex w-6/12 leading-7`"
+                                :class="`${infoItme ? 'infoChunk' : ''} inline-flex ${infoItme?.noLabel ? 'w-full' : 'w-6/12'} leading-7`"
                             >
                                 <label
+                                    v-if="!infoItme?.noLabel"
                                     class="mr-2 text-primary font-bold text-xl"
                                     :for="`#${infoItmeKey}`"
                                     :contenteditable="enableEdit"
@@ -22,7 +23,7 @@
                                     <a
                                         :contenteditable="enableEdit"
                                         @blur="inputEdit($event, infoLineItem, infoItmeKey)"
-                                        :class="`${infoItme?.type !== undefined ? 'text-link' : ''}`"
+                                        :class="`${infoItme?.type !== undefined ? 'text-link' : ''} ${infoItme?.noLabel ? 'text-primary text-sm' : ''}`"
                                         :target="infoItme.target || '_self'"
                                         :href="infoItme?.type !== undefined ? (infoItme.type + infoItme.val) : 'javascript:'"
                                     >{{ infoItme?.val || infoItme }}</a>
