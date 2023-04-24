@@ -1,6 +1,5 @@
 import { pageMainContent, setMoreOptonChildContent } from "./List/index.vue"
 import dataJson from "./base.json"
-import icon from '../../assets/icon.png';
 
 export enum PersonalInfoItemType {
     phone = "tel:",
@@ -60,7 +59,7 @@ interface RawToData {
 
 export function rawToData(dataJson): RawToData {
     let { pageMainContent: pageMainContentJsonData, personalInfo: personalInfoJsonData, name, logo } = dataJson
-    console.log(dataJson);
+    console.log(dataJson,"logo",logo);
 
     const tempData = dataJsonTransformPageMainContent({ ...pageMainContentJsonData }, dataJson, "pageMainContent");
     // console.log(tempData, dataJson);
@@ -69,7 +68,7 @@ export function rawToData(dataJson): RawToData {
         personalInfo: personalInfoJsonData,
         name,
         logo: {
-            "href": icon
+            "href": logo?.href
         }
     }
 }
