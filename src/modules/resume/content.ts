@@ -1,3 +1,4 @@
+import { icon } from "../../assets";
 import { pageMainContent, setMoreOptonChildContent } from "./List/index.vue"
 import dataJson from "./base.json"
 
@@ -58,17 +59,16 @@ interface RawToData {
 }
 
 export function rawToData(dataJson): RawToData {
-    let { pageMainContent: pageMainContentJsonData, personalInfo: personalInfoJsonData, name, logo } = dataJson
-    console.log(dataJson,"logo",logo);
+    let { pageMainContent: pageMainContentJsonData, personalInfo: personalInfoJsonData, name,logo } = dataJson
 
     const tempData = dataJsonTransformPageMainContent({ ...pageMainContentJsonData }, dataJson, "pageMainContent");
-    // console.log(tempData, dataJson);
+
     return {
         pageMainContent: tempData,
         personalInfo: personalInfoJsonData,
         name,
         logo: {
-            "href": logo?.href
+            "href": logo.href || icon
         }
     }
 }
