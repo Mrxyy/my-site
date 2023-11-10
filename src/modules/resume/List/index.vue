@@ -13,15 +13,16 @@
       >{{ pageMainContent.time }}</span>
       <h2 :class="`text-primary font-bold text-${pageMainContent.titleSize || '2xl'}`">
         <span class="icon mr-2" v-if="pageMainContent.icon" v-html="pageMainContent.icon"></span>
-        <span :contenteditable="enableEdit">{{ contentKey }}</span>
+        <span :contenteditable="enableEdit">{{ contentKey }} 
+      </span>
       </h2>
       <a
-        v-if="pageMainContent.linkText"
+        v-if="pageMainContent.linkText || contentItem.linkText"
         :contenteditable="enableEdit"
         target="_blank"
-        :href="pageMainContent.link"
+        :href="pageMainContent.link ||  contentItem.link"
         :class="` text-link text-xs ml-2 leading-8`"
-      >{{ pageMainContent.linkText }}</a>
+      >{{ pageMainContent.linkText ||  contentItem.linkText }}</a>
     </div>
     <ul class="pl-6">
       <li v-for="skillItem,index in contentItem" class="leading-8 my-2 whitespace-nowrap">
